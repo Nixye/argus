@@ -14,8 +14,7 @@ use League\Plates\Engine;
     }
 
     function set_Cookie(string $cookieName, $cookieValue,  int $sec = 0) {
-        $url = str_replace('/Agamenon/',"",URL_BASE);
-        $domainHttp = str_replace('http://', "", $url);
+        $domainHttp = str_replace('http://', "", URL_BASE);
         $domainHttps = str_replace('https://', "", $domainHttp);
         $domain = $domainHttp;
         if ($sec == 0){
