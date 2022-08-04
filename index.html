@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel = "stylesheet" type = "text/css" href = "cmdStyle.css" />
+		<script src="https://cdn.jsdelivr.net/npm/javascript-obfuscator/dist/index.browser.js"></script>
+		<title>Agamenon</title>
+	</head>
+	<script src="cmd.js"></script>
+	<body onload="init()">
+		<div id = "background">
+			<div id = "console">
+				<div>
+					<p id="lastCommand"> <b id="greenSetNoAnimation">> </b> Ola, bem vindo ao ARC</p>
+					<p id="lastCommand"> <b id="greenSetNoAnimation">> </b> Permita-me me apresentar, sou Ganaberal, IA que controla a gestao de todos os recursos de pesquisa.</p>
+					<p id="lastCommand"> <b id="greenSetNoAnimation">> </b> Por favor, digite o <b>Login</b>.</p>
+				</div>
+				<div id="lastCommands"></div>
+				<div>
+					<b id="greenSet">></b>
+					<textarea rows="1" id="command" onkeydown="checkInput();"></textarea>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,23 @@
+{
+    "name": "relic/agamenon",
+    "description": "",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Source\\" : "source/",
+            "Public\\" : "public/"
+        },
+        "files" : [
+            "source/config/APIModel.php",
+            "source/config/Config.php",
+            "source/config/Helpers.php"
+        ]
+    },
+    "require": {
+        "phpunit/php-timer": "^5.0",
+        "coffeecode/router" : "1.0.*",
+        "league/plates" : "3.*",
+        "varunsridharan/sweetalert2-php": "^1.0"
+    }
+}

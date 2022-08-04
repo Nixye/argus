@@ -1,0 +1,148 @@
+	* {
+		margin: 0px;
+		padding: 0px;
+	}
+
+	body {
+		background-color: rgb(0, 0, 0);
+	}
+
+	#background {
+		position: fixed;
+		top: 0px;
+		bottom: 0px;
+		left: 0px;
+		right: 0px;
+		width: 100%;
+		height: 100%;
+		background-color: black;
+		margin: 0px;
+		padding: 0px;
+	}
+
+	#console {
+		margin: 0px;
+		padding: 0px;
+	}
+
+	#consoletext {
+		color: rgb(255, 255, 255);
+		font-family: Monospace;
+		margin: 10px 0px 0px 10px;
+	}
+
+	#textinput {
+		resize: none;
+		margin: 0px 0px 10px 10px;
+		border: none;
+		outline: none;
+		background-color: rgb(0, 0, 0);
+		color: rgb(255, 255, 255);
+		font-family: Monospace;
+		width: calc(100% - 20px);
+		overflow: hidden;
+	}
+	
+	#greenSet {
+		animation-name: colorChange;
+		animation-duration: 1s;
+		animation-iteration-count: infinite;
+		font-size: 20px;
+		font-family: Monospace;
+	}
+	
+	#greenSetPassed {
+		animation-name: colorChange;
+		animation-duration: 1s;
+		animation-iteration-count: 3;
+		font-size: 20px;
+		font-family: Monospace;
+		color: rgb(119, 198, 110);
+	}
+	
+	#greenSetA {
+		animation-name: colorChangeConfused;
+		animation-duration: 2s;
+		animation-iteration-count: 3;
+		font-size: 20px;
+		font-family: Monospace;
+		color: rgb(220, 20, 60);
+	}
+	
+	#greenSetNoAnimation {
+		animation-name: colorChange;
+		animation-duration: 1s;
+		animation-iteration-count: 0;
+		font-size: 20px;
+		font-family: Monospace;
+		color: rgb(119, 198, 110);
+	}
+	
+	#greenSetNoAnimationF {
+		animation-name: colorChange;
+		animation-duration: 1s;
+		animation-iteration-count: 0;
+		font-size: 20px;
+		font-family: Monospace;
+		color: rgb(220, 20, 60);
+	}
+
+	#command {
+		resize: none;
+		border: none;
+		outline: none;
+		background-color: rgb(0, 0, 0);
+		color: rgb(255, 255, 255);
+		font-family: Monospace;
+		font-size: 15px;
+		width: calc(100% - 20px);
+		overflow: hidden;
+	}
+	
+	#lastCommand {
+		resize: none;
+		border: none;
+		outline: none;
+		background-color: rgb(0, 0, 0);
+		color: rgb(255, 255, 255);
+		font-family: Monospace;
+		font-size: 15px;
+		width: calc(100% - 20px);
+		overflow: hidden;
+	}
+	
+	#awaiter {
+		resize: none;
+		border: none;
+		outline: none;
+		background-color: rgb(0, 0, 0);
+		color: rgb(255, 255, 255);
+		font-family: Monospace;
+		font-size: 15px;
+		width: calc(100% - 20px);
+		overflow: hidden;
+	}
+	
+	@keyframes colorChange {
+		0% {
+			color: rgb(119, 198, 110);
+		}
+		50% {
+			color: rgb(0, 0, 0);
+		}
+		100% {
+			color: rgb(119, 198, 110);
+		}
+	}
+	
+	@keyframes colorChangeConfused {
+		0% {
+			color: rgb(119, 198, 110);
+		}
+		50% {
+			color: rgb(220, 20, 60);
+		}
+		100% {
+			color: rgb(119, 198, 110);
+		}
+	}
