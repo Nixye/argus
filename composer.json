@@ -1,6 +1,6 @@
 {
     "name": "relic/agamenon",
-    "description": "",
+    "description": "Another Dominion Authority",
     "minimum-stability": "stable",
     "license": "MIT",
     "autoload": {
