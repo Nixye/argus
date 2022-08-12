@@ -15,10 +15,10 @@ use League\Plates\Engine;
 
     function set_Cookie(string $cookieName, $cookieValue,  int $sec = 0) {
         $domain = "";
-        if (str_contains(URL_BASE_BASE, "http://")){
-            $domain = str_replace('http://', "", URL_BASE_BASE);
+        if (str_contains(URL_BASE, "http://")){
+            $domain = str_replace('http://', "", URL_BASE);
         }else{
-            $domain = str_replace('https://', "", URL_BASE_BASE);
+            $domain = str_replace('https://', "", URL_BASE);
         }
         if ($sec == 0){
             setcookie($cookieName, $cookieValue, 0, "/", $domain);

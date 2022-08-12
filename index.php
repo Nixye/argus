@@ -2,7 +2,7 @@
 ob_start();
 require __DIR__ . "/vendor/autoload.php";
 use CoffeeCode\Router\Router;
-$router = new Router(URL_BASE_BASE);
+$router = new Router(URL_BASE);
 
                             /* Controllers */
 $router->namespace("Source\App");
@@ -12,7 +12,6 @@ $router->namespace("Source\App");
 /* PROMPT */
 $router->group(null);
 $router->get("/", "Prompt:promptPage");
-$router->get("/commander", "Prompt:promptPage");
 
 
                             /*APIs*/
@@ -31,6 +30,7 @@ $router->get("/{errcode}", "WebError:genericTratamentError");
 /* Comandos Padrões */
 $router->dispatch();
 if ($router->error()){
+    var_dump($router->error()); die;
     $router->redirect("/ooops/{$router->error()}");
 }
 
