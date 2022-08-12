@@ -1,19 +1,17 @@
 <?php
 ob_start();
-//require __DIR__ . "/vendor/autoload.php";
-$dir = "http://agamenon-net.umbler.net";
-require $dir . "/vendor/autoload.php";
-require $dir . "/source/config/Config.php";
-use CoffeeCode\Router\Router;
 
+require __DIR__ . "/vendor/autoload.php";
+use CoffeeCode\Router\Router;
 $router = new Router(URL_BASE);
 
                             /* Controllers */
-$router->namespace("Source\App");
+$router->namespace("Source\app");
 
 
                             /*Pages*/
 /* PROMPT */
+$router->group(null);
 $router->get("/", "Prompt:promptPage");
 
 
@@ -35,4 +33,5 @@ $router->dispatch();
 if ($router->error()){
     $router->redirect("/ooops/{$router->error()}");
 }
+
 ob_end_flush();

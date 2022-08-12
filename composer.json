@@ -6,12 +6,12 @@
     "autoload": {
         "psr-4": {
             "Source\\" : "source/",
-            "Public\\" : "public/"
+            "Resources\\" : "resources/"
         },
         "files" : [
-            "source/config/APIModel.php",
-            "source/config/Config.php",
-            "source/config/Helpers.php"
+            "source/APIModel.php",
+            "source/Config.php",
+            "source/Helpers.php"
         ]
     },
     "require": {
