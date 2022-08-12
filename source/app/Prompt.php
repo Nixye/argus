@@ -10,6 +10,7 @@ class Prompt {
  * --> Pages
 */
     public function promptPage(){
+        echo(__DIR__); die;
         var_dump(__DIR__); die;
         $this->view = new Engine(__DIR__.'/../../templates/prompt', "php");
 

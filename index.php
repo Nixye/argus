@@ -8,15 +8,16 @@ $router = new Router(URL_BASE);
                             /* Controllers */
 $router->namespace("Source\App");
 
+
+                            /*Pages*/
+/* PROMPT */
+$router->get("/", "Prompt:promptPage");
+
+
                             /*APIs*/
 /*General APIs*/
 $router->group("promptCommands");
 $router->post("/inputKey", "Prompt:setInputKey");
-
-                            /*Pages*/
-/* PROMPT */
-$router->group(null);
-$router->get("/", "Prompt:promptPage");
 
 
                             /*Error Treatment*/
