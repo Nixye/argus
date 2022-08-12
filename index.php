@@ -1,6 +1,9 @@
 <?php
 ob_start();
-require __DIR__ . "/vendor/autoload.php";
+//require __DIR__ . "/vendor/autoload.php";
+$dir = "http://agamenon-net.umbler.net";
+require $dir . "/vendor/autoload.php";
+require $dir . "/source/config/Config.php";
 use CoffeeCode\Router\Router;
 
 $router = new Router(URL_BASE);
