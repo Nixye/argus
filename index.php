@@ -1,5 +1,9 @@
 <?php
 ob_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require __DIR__ . "/vendor/autoload.php";
 use CoffeeCode\Router\Router;
 $router = new Router(URL_BASE);
@@ -30,7 +34,7 @@ $router->get("/{errcode}", "WebError:genericTratamentError");
 /* Comandos Padrões */
 $router->dispatch();
 if ($router->error()){
-    var_dump($router->error()); die;
+    var_dump($router->error());
     $router->redirect("/ooops/{$router->error()}");
 }
 
