@@ -14,9 +14,12 @@ use League\Plates\Engine;
     }
 
     function set_Cookie(string $cookieName, $cookieValue,  int $sec = 0) {
-        $domainHttp = str_replace('http://', "", URL_BASE);
-        $domainHttps = str_replace('https://', "", $domainHttp);
-        $domain = $domainHttp;
+        $domain = "";
+        if (str_contains(URL_BASE_BASE, "http://")){
+            $domain = str_replace('http://', "", URL_BASE_BASE);
+        }else{
+            $domain = str_replace('https://', "", URL_BASE_BASE);
+        }
         if ($sec == 0){
             setcookie($cookieName, $cookieValue, 0, "/", $domain);
             return;

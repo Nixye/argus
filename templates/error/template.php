@@ -1,5 +1,5 @@
 <?php
-	$urlBase = URL_BASE;
+	$urlBase = URL_BASE_BASE;
 ?>
 <!DOCTYPE html>
 <html>

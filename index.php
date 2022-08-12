@@ -1,18 +1,18 @@
 <?php
 ob_start();
-
 require __DIR__ . "/vendor/autoload.php";
 use CoffeeCode\Router\Router;
-$router = new Router(URL_BASE);
+$router = new Router(URL_BASE_BASE);
 
                             /* Controllers */
-$router->namespace("Source\app");
+$router->namespace("Source\App");
 
 
                             /*Pages*/
 /* PROMPT */
 $router->group(null);
 $router->get("/", "Prompt:promptPage");
+$router->get("/commander", "Prompt:promptPage");
 
 
                             /*APIs*/

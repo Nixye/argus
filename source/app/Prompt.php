@@ -11,9 +11,7 @@ class Prompt {
 */
     public function promptPage(){
         $this->view = new Engine(__DIR__.'/../../templates/prompt', "php");
-
         $hasLogin = $this->validaSeLoginJaFoiEfetuado();
-
         echo $this->view->render('prompt', [
             "pageName" => "Agamenon",
             "hasLogin" => $hasLogin
