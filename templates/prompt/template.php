@@ -1,5 +1,5 @@
 <?php
-	$urlBase = URL_BASE;
+	$urlBase = URL_BASE . "/";
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,6 +12,6 @@
 	<script src="<?= url("resources/js/") ?>init.js"></script>
 	<body onload='init("<?=$urlBase?>")'>
         <?= $this->section('content') ?>
-		<script src="<?= url("resources/js/") ?>inputKeyPromtp.js"></script>
 	</body>
+	<script src="<?= url("resources/js/") ?>inputKeyPromtp.js"></script>
 </html>

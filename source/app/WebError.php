@@ -7,7 +7,7 @@ class WebError
     private $view;
 
     public function __construct() {
-        $this->view = new Engine(__DIR__.'/../../templates/error/error', "php");
+        $this->view = new Engine(__DIR__.'/../../templates/error', "php");
     }
 
     public function genericTratamentError($data){

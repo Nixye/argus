@@ -154,6 +154,30 @@ function folderPictures(){
 			- Estrutura.txt 311
 			- Acontecimentos.txt 312
 			- Relatório de Campo.txt 313
+
+
+
+projetos(1)
+	argus(1.1)
+		notas(1.1.1)
+			nota pesquisa 0.txt(1.1.1.1)
+			nota pesquisa 1.txt(1.1.1.2)
+			nota pesquisa 2.txt(1.1.1.3)
+		relatos(1.1.2)
+			denuncias.pst(1.1.2.1)
+		evidências(1.1.3)
+			reliquia.encrypt.png(1.1.3.1)
+			construcao.png(1.1.3.2)
+			subject01.encrypt.png(1.1.3.3)
+		entrevistas(1.1.4)
+			entrevista 1(1.1.4.1)
+			entrevista ▄¦▄«(1.1.4.2)
+	||||(1.2)
+	||||(1.3)
+log.encrypt.cat(2)
+
+
+
 - projects 4
 	- ARGUS 5
 		- pesquisa 51

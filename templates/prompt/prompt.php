@@ -23,7 +23,7 @@ $this->layout('template', [
             ?>
         </div>
         <div id="lastCommands"></div>
-        <div>
+        <div id="prpCF">
             <b id="greenSet">></b>
             <textarea rows="1" id="command"></textarea>
         </div>

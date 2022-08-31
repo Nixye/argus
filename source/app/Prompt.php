@@ -4,6 +4,7 @@ use League\Plates\Engine;
 
 
 class Prompt {
+
     public $view;
 
 /*
@@ -38,7 +39,7 @@ class Prompt {
                     $modeloRetorno->setStatus(0);
                 } else {
                     set_Cookie("passLoginUser", false);
-                    $modeloRetorno->setMessage("Usuario Incorreto, dicade usuario: Ilíada");
+                    $modeloRetorno->setMessage("Usuario Incorreto, dica de usuario: Ilíada");
                     $modeloRetorno->setStatus(1);
                 }
                 echo sendResponseAPI($modeloRetorno);
@@ -59,7 +60,18 @@ class Prompt {
                 return;
             }
         }
-
+        if (strlen($input) < 1) {
+            echo sendResponseAPI($modeloRetorno);
+            return;
+        }
+        $comKeyA = (string)$data["input"][0];
+        $comKeyB = (string)$data["input"][1];
+        $cData = (string) $comKeyA.$comKeyB;
+        if ($cData == "ls"){
+            echo ($this->listaDiretorios($data)); return;
+        } else if ($cData == "cd"){
+            echo ($this->acessaDiretorios($data)); return;
+        }
         echo sendResponseAPI($modeloRetorno);
         return;
     }
@@ -68,7 +80,7 @@ class Prompt {
 /*
  * --> Functions
 */
-    public function validaSeLoginJaFoiEfetuado(){
+    public function validaSeLoginJaFoiEfetuado() {
         $hasLoginUser = get_Cookie("passLoginUser");
         $hasLoginPassword = get_Cookie("passLoginPassword");
         if (!isset($hasLoginUser)) $hasLoginUser = false;
@@ -80,60 +92,51 @@ class Prompt {
         }
         return true;
     }
-    public function validaUsuario($usuario){
+    public function validaUsuario($usuario) {
         if (strtolower($usuario) == "homero")
             return true;
         return false;
     }
-    public function validaSenha($senha){
+    public function validaSenha($senha) {
         if (strtolower($senha) == "agamenon")
             return true;
         return false;
     }
 
+    public function listaDiretorios($commandData) {
+        $modeloRetorno = new \Source\config\APIModel();
+        $lsCommands = new \Source\App\Prompt_ls();
+        $actualFolder = $commandData["afo"];
+        if ($actualFolder == "0") $modeloRetorno = $lsCommands->lsRootDir($commandData); // Root
+        else if ($actualFolder == "1") $modeloRetorno = $lsCommands->lsRootProjetosDir($commandData); // Projetos
+            else if ($actualFolder == "1.1") $modeloRetorno = $lsCommands->lsRootProjetosArgusDir($commandData); // Argus
+                else if ($actualFolder == "1.1.1") $modeloRetorno = $lsCommands->lsRootProjetosArgusNotasDir($commandData); // Notas
+                else if ($actualFolder == "1.1.2") $modeloRetorno = $lsCommands->lsRootProjetosArgusRelatosDir($commandData); // Relatos
+                else if ($actualFolder == "1.1.3") $modeloRetorno = $lsCommands->lsRootProjetosArgusEvidenciasDir($commandData); // Evidências
+                else if ($actualFolder == "1.1.4") $modeloRetorno = $lsCommands->lsRootProjetosArgusEntrevistasDir($commandData); // Entrevistas
+        else { $modeloRetorno->setMessage("Diretório não encontrado!"); }
 
-/*
- * --> APIs
-*/
+        $modeloRetorno->setType(2);
+        $modeloRetorno->setAction(2);
+        $modeloRetorno->setStatus(1);
+        return sendResponseAPI($modeloRetorno);
+    }
 
-    public function sendFiles($data){
-        var_dump($data);
-        if ($data['file']['name']) {
-            if (!$data['file']['error']) {
-                $name = md5(rand(100, 200));
-                $ext = pathinfo($data['file']['name'], PATHINFO_EXTENSION);
-                $filename = $name.'.'.$ext;
-                $destination = "/temp/images/".$filename;
-                $location = $data["file"]["tmp_name"];
-                move_uploaded_file($location, $destination);
-                echo url("/temp/images/".$filename);
-            } else {
-                echo $message = 'Ooops!  Your upload triggered the following error:  '.$data['file']['error'];
-            }
-        }
+    public function acessaDiretorios($commandData) {
+        $modeloRetorno = new \Source\config\APIModel();
+        $cdCommands = new \Source\App\Prompt_cd();
+        $actualFolder = $commandData["afo"];
+
+        if ($actualFolder == "0") $modeloRetorno = $cdCommands->cdRootDir($commandData); // Root
+            if ($actualFolder == "1") $modeloRetorno = $cdCommands->cdRootProjectsDir($commandData); // Projetos
+                if ($actualFolder == "1.1") $modeloRetorno = $cdCommands->cdRootProjectsArgusDir($commandData); // Argus
+                    if ($actualFolder == "1.1.1") $modeloRetorno = $cdCommands->cdRootProjectsArgusNotas($commandData); // Notas
+                    if ($actualFolder == "1.1.2") $modeloRetorno = $cdCommands->cdRootProjectsArgusRelatos($commandData); // Relatos
+                    if ($actualFolder == "1.1.3") $modeloRetorno = $cdCommands->cdRootProjectsArgusEvidencias($commandData); // Evidências
+                    if ($actualFolder == "1.1.4") $modeloRetorno = $cdCommands->cdRootProjectsArgusEntrevistas($commandData); // Entrevistas
+
+        return sendResponseAPI($modeloRetorno);
     }
-    public function alterViewMode($data){
-        $novoModelo = new \Source\APIModel();
-        if ((new User())->validateActualUser()){
-            echo sendResponseAPI((new General_User_Confs())->alterViewMode());
-            return;
-        }
-        $novoModelo->setMessage(getTranslate("NotPermission"));
-        $novoModelo->setStatus(1);
-        echo sendResponseAPI($novoModelo);
-    }
-    public function logout($data) : bool {
-        unset_Cookie("loginJaEfetuado");
-        unset_Cookie("idUser");
-        unset_Cookie("enctPassUser");
-        unset_Cookie("keepConnected");
-        $loginJaEfetuado = get_Cookie("loginJaEfetuado");
-        $idUser = get_Cookie("idUser");
-        $enctPassUser = get_Cookie("enctPassUser");
-        $keepConnected = get_Cookie("keepConnected");
-        if(!isset($loginJaEfetuado) && !isset($idUser) && !isset($enctPassUser) && !isset($keepConnected))
-            return true;
-        return false;
-    }
+
 
 }

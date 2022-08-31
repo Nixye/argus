@@ -16,8 +16,7 @@
     },
     "require": {
         "phpunit/php-timer": "^5.0",
-        "coffeecode/router" : "1.0.*",
-        "league/plates" : "3.*",
-        "varunsridharan/sweetalert2-php": "^1.0"
+        "coffeecode/router" : "2.0.*",
+        "league/plates" : "3.*"
     }
 }

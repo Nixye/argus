@@ -77,21 +77,6 @@ use League\Plates\Engine;
         return substr($text, 0, $numberWords);
     }
 
-    function getIdActualProfile(){
-        $idProfile = null;
-        $param = http_build_query([
-            "id_usuario" => get_Cookie("idUser"),
-            "ultimo" => 1
-        ]);
-        $profiles = (new \Source\Models\Profile())->find("id_usuario = :id_usuario AND ultimo = :ultimo", $param)->limit(1)->fetch(true);
-        if ($profiles == null)
-            return $idProfile;
-        foreach ($profiles as $p){
-            $idProfile = $p->id;
-        }
-        return $idProfile;
-    }
-
 
     function validateEmails(string $email) : bool{
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -102,7 +87,7 @@ use League\Plates\Engine;
     function sendResponseAPI(\Source\Config\APIModel $modelo) : string{
         try {
             return json_encode($modelo);
-        }catch (\http\Exception\RuntimeException $ex) {
+        }catch (Exception $ex) {
             $novoModelo = new \Source\Config\APIModel();
             $novoModelo->setMessage("Ocorreu algum problema na chamada! Tente novamente mais tarde.");
             $novoModelo->setStatus(1);
